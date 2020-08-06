@@ -21,6 +21,10 @@ app.get('/dinosaurs', (req, res)=>{
     //dinoData as "myDinos"
     res.render('dinosaurs/index', {myDinos: dinoData})
 })
+app.get('/dinosaurs/new', (req,res)=>{
+    res.render('dinosaurs/new')
+})
+
 //show route (uses URL parameteer "id")
 app.get('/dinosaurs/:id', (req, res)=>{
     

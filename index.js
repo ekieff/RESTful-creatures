@@ -13,9 +13,13 @@ app.get('/', (req, res)=>{
 
 //index route
 app.get('/dinosaurs', (req, res)=>{
+    //get the json from dinosaurs.json
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
-    console.log(dinosaurs)
-    res.send('dinosaurs index route')
+    //conver the json to javascript
+    let dinoData = JSON.parse(dinosaurs)
+    // render our dino index page and pass it the
+    //dinoData as "myDinos"
+    res.render('dinosaurs/index', {myDinos: dinoData})
 })
 
 app.listen(8000);

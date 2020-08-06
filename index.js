@@ -18,6 +18,15 @@ app.get('/dinosaurs', (req, res)=>{
     let dinosaurs = fs.readFileSync('./dinosaurs.json')
     //conver the json to javascript
     let dinoData = JSON.parse(dinosaurs)
+
+    let nameFilter = req.query.nameFilter
+    // keep in dinoData any dinos whose name field is equal to user's entry name.
+    if(nameFilter){
+        dinoData = dinoData.filter((dino)=>{
+            return dino.name.toLowerCase()===nameFilter.toLowerCase()
+        })
+    }
+
     // render our dino index page and pass it the
     //dinoData as "myDinos"
     res.render('dinosaurs/index', {myDinos: dinoData})
@@ -47,5 +56,7 @@ app.post('/dinosaurs', (req, res)=>{
     // redirect to the index get route
     res.redirect('/dinosaurs')
 })
+
+
 
 app.listen(8000);

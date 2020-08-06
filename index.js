@@ -28,7 +28,7 @@ app.get('/dinosaurs/:id', (req, res)=>{
     let dinoData = JSON.parse(dinosaurs)
     //grab the index parameter from the url and convert to int
     let dinoIndex = parseInt(req.params.id)
-    res.render('dinosaurs/show', {myDinos: dinoData[dinoIndex]})
+    res.render('dinosaurs/show', {myDino: dinoData[dinoIndex]})
 })
 
 app.listen(8000);
